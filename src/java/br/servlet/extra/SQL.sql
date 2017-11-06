@@ -1,0 +1,3 @@
+CREATE TABLE PRODUTO (ID int INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1), VALOR float, CATEGORIA int, NOME varchar(30), DESCRICAO varchar(100));
