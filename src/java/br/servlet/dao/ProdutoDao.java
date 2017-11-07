@@ -3,14 +3,18 @@ package br.servlet.dao;
 import java.sql.*;
 import java.util.*;
 import br.servlet.model.Produto;
+import br.servlet.model.Categoria;
+import br.servlet.dao.CategoriaDao;
 import br.servlet.extra.Database;
  
 public class ProdutoDao {
  
     private Connection connection;
+    private CategoriaDao CatDao;
  
     public ProdutoDao() {
         connection = Database.getConnection();
+        CatDao = new CategoriaDao();
     }
  
 
@@ -19,7 +23,7 @@ public class ProdutoDao {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into PRODUTO (VALOR, CATEGORIA, NOME, DESCRICAO) values ( ?, ?, ?, ? )");
             // Parameters start with 1
             preparedStatement.setFloat(1, produto.getValor());
-            preparedStatement.setInt(2,0);//preparedStatement.setInt(2, user.getcategoria().getId());            
+            preparedStatement.setInt(2, produto.getCategoria().getId());            
             preparedStatement.setString(3, produto.getNome());
             preparedStatement.setString(4, produto.getDescricao());
             preparedStatement.executeUpdate();
@@ -48,7 +52,7 @@ public class ProdutoDao {
             // Parameters start with 1
             
             preparedStatement.setFloat(1, produto.getValor());
-            preparedStatement.setInt(2, 0);//preparedStatement.setint(2, produto.getCategoria());
+            preparedStatement.setInt(2, produto.getCategoria().getId());
             preparedStatement.setString(3, produto.getNome());
             preparedStatement.setString(4, produto.getDescricao());
             preparedStatement.setInt(5, produto.getId());
@@ -68,7 +72,7 @@ public class ProdutoDao {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("ID"));
                 produto.setValor(rs.getFloat("VALOR"));
-                //produto.setCategoria(CategoriaDao.getCategoria(rs.getInt("CATEGORIA")));
+                produto.setCategoria(CatDao.getCategoria(rs.getInt("CATEGORIA")));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produtos.add(produto);
@@ -80,17 +84,17 @@ public class ProdutoDao {
         return produtos;
     }
  
-    public Produto getProduto(String Id) {
+    public Produto getProduto(int Id) {
         Produto produto = new Produto();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where ID=?");
-            preparedStatement.setString(1, Id);
+            preparedStatement.setInt(1, Id);
             ResultSet rs = preparedStatement.executeQuery();
  
             if (rs.next()) {
                 produto.setId(rs.getInt("ID"));
                 produto.setValor(rs.getFloat("VALOR"));
-                //produto.setCategoria(CategoriaDao.getCategoria(rs.getInt("CATEGORIA")));
+                produto.setCategoria(CatDao.getCategoria(rs.getInt("CATEGORIA")));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
             }

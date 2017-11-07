@@ -1,11 +1,11 @@
 package br.servlet.model;
 
-//import br.servlet.model.Categoria;
+import br.servlet.model.Categoria;
  
 public class Produto {
    int id;
    float valor;
-   //Categoria categoria;
+   Categoria categoria;
    String   nome, descricao;
  
    public int getId(){
@@ -15,11 +15,11 @@ public class Produto {
    public float getValor(){
        return this.valor;
    }
-   /*
+   
    public Categoria getCategoria(){
        return this.categoria;
    }
-   */
+   
    
    public String getNome(){
        return this.nome;
@@ -36,11 +36,11 @@ public class Produto {
    public void setValor(Float set){
        this.valor = set;
    }
-   /*
+   
    public void setCategoria(Categoria set){
        this.categoria = set;
    }
-   */
+   
    public void setNome(String set){
        this.nome = set;
    }
