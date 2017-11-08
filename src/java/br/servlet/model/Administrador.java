@@ -1,7 +1,8 @@
 package br.servlet.model;
+import java.io.*;
 
  
-public class Administrador {
+public class Administrador implements Serializable {
    int id;
    String usuario, senha;
  

@@ -1,9 +1,10 @@
 package br.servlet.model;
+import java.io.*;
 
 import br.servlet.model.Cliente;
 import br.servlet.model.Produto;
  
-public class Compra {
+public class Compra implements Serializable {
    int id;
    Cliente cliente;
    Produto produto;

@@ -1,8 +1,9 @@
 package br.servlet.model;
+import java.io.*;
 
 import br.servlet.model.Categoria;
  
-public class Produto {
+public class Produto implements Serializable {
    int id;
    float valor;
    Categoria categoria;

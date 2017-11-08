@@ -1,8 +1,8 @@
 package br.servlet.model;
-
+import java.io.*;
 
  
-public class Cliente {
+public class Cliente implements Serializable {
    int id;
    String nome, endereco, cep, estado, referencia, cpf, rg, telefone, celular, cartao, bandeira;
  

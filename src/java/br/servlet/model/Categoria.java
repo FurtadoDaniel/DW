@@ -1,7 +1,7 @@
 package br.servlet.model;
-
+import java.io.*;
  
-public class Categoria {
+public class Categoria implements Serializable {
    int id;
    String descricao;
  
