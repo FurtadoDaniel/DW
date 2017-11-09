@@ -1,0 +1,32 @@
+h2 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+table {
+    text-align: right;
+    border-spacing: 5px;
+    width: 33%;
+    position: absolute;
+    left: 48%;
+    margin: 0 0 0 200px;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+}
+
+th[name="submit"] {
+    text-align: center;
+}
+
+#login {
+    padding-top: 17%;
+}

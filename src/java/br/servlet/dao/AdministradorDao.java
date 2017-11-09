@@ -27,11 +27,11 @@ public class AdministradorDao {
         }
     }
  
-    public void deleteAdministrador(Administrador administrador) {
+    public void deleteAdministrador(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from ADMINISTRADOR where ID=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, administrador.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {
@@ -59,7 +59,7 @@ public class AdministradorDao {
         List<Administrador> administradors = new ArrayList<Administrador>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from ADMINISTRADORS");
+            ResultSet rs = statement.executeQuery("select * from ADMINISTRADOR");
             while (rs.next()) {
                 Administrador administrador = new Administrador();
                 administrador.setId(rs.getInt("ID"));
@@ -92,4 +92,22 @@ public class AdministradorDao {
  
         return administrador;
     }
+    
+    public int getAdministrador(String user, String senha) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from ADMINISTRADOR where USUARIO=? AND SENHA=?");
+            preparedStatement.setString(1, user);
+            preparedStatement.setString(2, senha);
+            ResultSet rs = preparedStatement.executeQuery();
+ 
+            if (rs.next()) {
+                return (rs.getInt("ID"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+ 
+        return 0;
+    }
+    
 }

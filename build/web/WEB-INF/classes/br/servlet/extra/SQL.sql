@@ -28,5 +28,7 @@ CREATE TABLE COMPRAS (ID int not null primary key GENERATED ALWAYS AS IDENTITY (
                       PRODUTO int);
 
 CREATE TABLE ADMINISTRADOR (ID int not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-                      USUARIO float, 
-                      SENHA int);
+                      USUARIO VARCHAR(30), 
+                      SENHA VARCHAR(30));
+
+INSERT INTO ADMINISTRADOR (USUARIO, SENHA) VALUES ('adm','adm')
