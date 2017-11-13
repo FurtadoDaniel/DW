@@ -11,13 +11,10 @@ function validarTexto(id) {
 
 }
 
-function validarNum(id, tam) {
+function validarNum(id) {
     var num = document.getElementById(id).value;
 
-    if (!isNaN(num) ) {
-        if (tam < 0 || num.length == tam) return true;
-
-    }
+    if (!isNaN(num) && num.length > 0) return true;
 
     alert(id + " inválido");
     return false;
