@@ -18,7 +18,7 @@ table {
     width: 33%;
     position: absolute;
     left: 48%;
-    margin: 0 0 0 200px;
+    margin: 0 0 0-200px;
     border: 1px solid darkgrey;
     border-radius: 4px;
 }
@@ -27,6 +27,6 @@ th[name="submit"] {
     text-align: center;
 }
 
-#login {
+#login, #produto {
     padding-top: 17%;
 }
