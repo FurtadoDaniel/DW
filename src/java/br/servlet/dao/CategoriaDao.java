@@ -26,11 +26,11 @@ public class CategoriaDao {
         }
     }
  
-    public void deleteCategoria(Categoria categoria) {
+    public void deleteCategoria(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from CATEGORIA where ID=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, categoria.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {

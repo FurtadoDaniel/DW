@@ -33,11 +33,11 @@ public class ProdutoDao {
         }
     }
  
-    public void deleteProduto(Produto produto) {
+    public void deleteProduto(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from PRODUTO where ID=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, produto.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {

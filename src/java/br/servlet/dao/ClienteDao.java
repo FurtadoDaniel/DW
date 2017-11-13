@@ -36,11 +36,11 @@ public class ClienteDao {
         }
     }
  
-    public void deleteCliente(Cliente cliente) {
+    public void deleteCliente(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from CLIENTE where ID=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, cliente.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {

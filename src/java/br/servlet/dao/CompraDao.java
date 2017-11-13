@@ -34,11 +34,11 @@ public class CompraDao {
         }
     }
  
-    public void deleteCompra(Compra compra) {
+    public void deleteCompra(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from COMPRA where ID=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, compra.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {
