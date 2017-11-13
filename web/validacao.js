@@ -21,6 +21,19 @@ function validarNum(id) {
 
 }
 
+function validarNum(id, tam) {
+    var num = document.getElementById(id).value;
+
+    if (!isNaN(num) ) {
+        if (tam < 0 || num.length == tam) return true;
+
+    }
+
+    alert(id + " inválido");
+    return false;
+
+}
+
 function justLetters(palavra) {
     return (/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s ]+$/.test(palavra));
 }
