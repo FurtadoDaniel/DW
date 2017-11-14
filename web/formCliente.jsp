@@ -7,7 +7,7 @@
 
         <script type="text/javascript" src="validacao.js"></script>
 
-        <title>Cadastro | Produto</title>
+        <title>Cadastro | Cliente</title>
     </head>
 
     <body>

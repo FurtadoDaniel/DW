@@ -7,7 +7,7 @@
 
         <script type="text/javascript" src="validacao.js"></script>
 
-        <title>Cadastro | Administrador</title>
+        <title>Cadastro | Categoria</title>
     </head>
 
     <body>
@@ -18,12 +18,8 @@
 						<th><input type="number" name="id" id="id" placeholder="12345578" onchange="validarNum('id')"></th>
 					</tr>
 					<tr>
-						<th>Login:</th>
-						<th><input type="text" name="user" id="user" autofocus onchange="validarTexto('user')"></th>
-					</tr>
-					<tr>
-						<th>Senha:</th>
-						<th><input type="password" name="senha" id="senha" onchange="validarNum('valor')"></th>
+						<th>Descrição:</th>
+						<th><input type="text" name="descricao" id="descricao"  onchange="validarAlphaNum('descricao')"></th>
 					</tr>
                     <tr>
 						<th colspan="2" name="submit"><button type="button" id="submit"  onclick="checkEmpty()">Enviar</button></th>

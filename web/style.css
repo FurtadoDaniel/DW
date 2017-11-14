@@ -2,7 +2,7 @@ h2 {
     text-align: center;
 }
 
-input {
+button, input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -12,8 +12,11 @@ input {
     box-sizing: border-box;
 }
 
-table {
+form {
     text-align: right;
+}
+
+table {
     border-spacing: 5px;
     width: 33%;
     position: absolute;
@@ -29,4 +32,56 @@ th[name="submit"] {
 
 #login, #produto {
     padding-top: 17%;
+}
+
+#menuVertical {
+    border-spacing: 5px;
+    width: 33%;
+    position: absolute;
+    left: 48%;
+    margin: 0 0 0-200px;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+}
+
+a {
+    color: black;
+    display:block;
+    text-decoration: none;
+    padding: 8px;
+
+}
+
+#menuVertical a:hover {
+    background-color: #ccc;
+}
+
+#menuVertical a.title {
+    background-color: black;
+    color: white;
+}
+
+#topnav {
+    background-color: black;
+    overflow: hidden;
+}
+
+#topnav a {
+    display: block;
+    color: white;
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+
+#topnav a:hover {
+    background-color: darkgrey;
+    color: black;
+}
+
+#topnav a.active {
+    background-color: darkgrey;
+    color: black;
 }
