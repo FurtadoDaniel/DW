@@ -21,7 +21,7 @@ public class AdministradorController extends HttpServlet {
  
     public AdministradorController() {
         super();
-        dao = new AdministradorDao();
+        this.dao = new AdministradorDao();
     }
  
     
@@ -50,15 +50,28 @@ public class AdministradorController extends HttpServlet {
     }
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Administrador administrador = new Administrador();
-        administrador.setUsuario(request.getParameter("usuario"));
-        administrador.setSenha(request.getParameter("senha"));
-        if (request.getParameter("id") == "0"){
-            dao.addAdministrador(administrador);
+            
+        if(!request.getParameterMap().containsKey("deleta_id")){
+        
+            Administrador administrador = new Administrador();
+            String user = request.getParameter("user");
+            String pass = request.getParameter("senha");
+            administrador.setUsuario(user);
+            administrador.setSenha(pass);
+            if ("0".equals(request.getParameter("id"))){
+                dao.addAdministrador(administrador);
+            }
+            else {
+                String id = request.getParameter("id");
+                administrador.setId(Integer.parseInt(id));
+                dao.updateAdministrador(administrador);
+            }
         }
+        
         else {
-            dao.updateProuto(administrador);
+            dao.deleteAdministrador(Integer.parseInt(request.getParameter("deleta_id")));
         }
+        
         
         request.setAttribute("administradores", dao.getAdministradors());
         request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
@@ -66,7 +79,6 @@ public class AdministradorController extends HttpServlet {
     
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        dao.deleteAdministrador(Integer.parseInt(request.getParameter("id")));
        
         request.setAttribute("administradores", dao.getAdministradors());
         request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);

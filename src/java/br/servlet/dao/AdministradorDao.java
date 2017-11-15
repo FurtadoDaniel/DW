@@ -16,20 +16,21 @@ public class AdministradorDao {
 
     public void addAdministrador(Administrador administrador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into APP.ADMINISTRADOR (USUARIO, SENHA) values ( ?, ? )");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into ADMINISTRADOR (USUARIO, SENHA) values ( ?, ? )");
             // Parameters start with 1
             preparedStatement.setString(1, administrador.getUsuario());
             preparedStatement.setString(2, administrador.getSenha());
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {
+            
             e.printStackTrace();
         }
     }
  
     public void deleteAdministrador(int id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from APP.ADMINISTRADOR where ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from ADMINISTRADOR where ID=?");
             // Parameters start with 1
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -39,15 +40,15 @@ public class AdministradorDao {
         }
     }
  
-    public void updateProuto(Administrador administrador) {
+    public void updateAdministrador(Administrador administrador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update APP.ADMINISTRADOR set USUARIO=?, SENHA=? "
+            PreparedStatement preparedStatement = connection.prepareStatement("update ADMINISTRADOR set USUARIO=?, SENHA=? "
                     + "where ID=?");
             // Parameters start with 1
             
             preparedStatement.setString(1, administrador.getUsuario());
             preparedStatement.setString(2, administrador.getSenha());
-            preparedStatement.setInt(3, administrador.getId());
+            preparedStatement.setInt(3, administrador.getId());            
             preparedStatement.executeUpdate();
  
         } catch (SQLException e) {

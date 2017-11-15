@@ -15,7 +15,7 @@ public class Administrador implements Serializable {
    }
    
    public String getSenha(){
-       return this.usuario;
+       return this.senha;
    }
    
    public void setId(int set){

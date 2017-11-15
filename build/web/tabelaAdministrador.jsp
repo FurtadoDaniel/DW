@@ -42,8 +42,8 @@
                     <td><%=aux.getUsuario()%></td>
                     <td><%=aux.getSenha()%></td>
                     <td>
-                        <form action="AdministradorController" method="delete" name="deletar" id="del" autocomplete="off">
-                             <input type="hidden" name="id" value="<%=aux.getId()%>">
+                        <form action="/adm/administrador" method="post" name="deletar" id="del" autocomplete="off">
+                             <input type="hidden" name="deleta_id" value="<%=aux.getId()%>">
                              <input type="submit" id="nocss" value="Deletar" >
                         </form>
                     </td>
@@ -55,7 +55,7 @@
 
             <tfoot>
                 <th></th><th></th>
-                <th><button type="button" id="novo"><a href="/DW/adm/administrador?id=0">Adcionar</a></button></th>
+                <th><a href="/adm/administrador?id=0">Adcionar</a></th>
             </tfoot>
         </table>
     </body>

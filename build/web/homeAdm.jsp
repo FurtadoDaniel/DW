@@ -12,7 +12,7 @@
     <body>
         <div name="menuVertical" id="menuVertical">
             <a href="#" class="title">Tabelas</a>
-            <a href="/DW/adm/administrador">Administradores</a>
+            <a href="/adm/administrador">Administradores</a>
             <a href="tabelaCategoria.jsp">Categorias</a>
             <a href="tabelaCliente.jsp">Clientes</a>
             <a href="tabelaCompras.jsp">Compras</a>
