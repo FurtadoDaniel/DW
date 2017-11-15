@@ -3,8 +3,8 @@ import java.io.*;
 
  
 public class Administrador implements Serializable {
-   int id;
-   String usuario, senha;
+   int id=0;
+   String usuario="", senha="";
  
    public int getId(){
        return this.id;

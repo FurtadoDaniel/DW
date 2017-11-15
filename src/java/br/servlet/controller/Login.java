@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("adm", true);
             
-            response.sendRedirect("AdministradorController");
+            response.sendRedirect("/DW/homeAdm.jsp");
         }
     }
 

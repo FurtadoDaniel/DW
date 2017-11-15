@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  
 import br.servlet.dao.AdministradorDao;
 import br.servlet.model.Administrador;
- 
+
+
+
 public class AdministradorController extends HttpServlet {
     private AdministradorDao dao;
  
@@ -22,22 +24,28 @@ public class AdministradorController extends HttpServlet {
         dao = new AdministradorDao();
     }
  
+    
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+          
+        
         
         if (!request.getParameterMap().containsKey("id")) {
             request.setAttribute("administradores", dao.getAdministradors());
             request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
         }
         
-        else if(request.getParameter("id") == "0"){
-            request.setAttribute("administrador", new Administrador());
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
-        }
-        
-        else {
-            request.setAttribute("administrador", dao.getAdministrador(Integer.parseInt(request.getParameter("id"))));
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+        else { 
+            if(request.getParameter("id") == "0"){
+                request.setAttribute("administrador", new Administrador());
+                request.getRequestDispatcher("/formAdm.jsp").forward(request, response);
+            }
+
+            else {
+                request.setAttribute("administrador", dao.getAdministrador(Integer.parseInt(request.getParameter("id"))));
+                request.getRequestDispatcher("/formAdm.jsp").forward(request, response);
+            }
         }
     }
  
@@ -53,7 +61,7 @@ public class AdministradorController extends HttpServlet {
         }
         
         request.setAttribute("administradores", dao.getAdministradors());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+        request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
     }
     
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,6 +69,6 @@ public class AdministradorController extends HttpServlet {
         dao.deleteAdministrador(Integer.parseInt(request.getParameter("id")));
        
         request.setAttribute("administradores", dao.getAdministradors());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+        request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
     }
 }

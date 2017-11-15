@@ -23,6 +23,7 @@
                     </div></th>
                 </tr>
                 <tr>
+                    <th>Id</th>
                     <th>Login</th>
                     <th>Senha</th>
                     <th>Excluir</th>
@@ -37,7 +38,7 @@
 
                 %>
                 <tr>
-
+                    <td><a href="administrador?id=<%=aux.getId()%>"><%=aux.getId()%></a></td>
                     <td><%=aux.getUsuario()%></td>
                     <td><%=aux.getSenha()%></td>
                     <td>
@@ -54,7 +55,7 @@
 
             <tfoot>
                 <th></th><th></th>
-                <th><button type="button" id="novo"><a href="formAdm.jsp">Adcionar</a></button></th>
+                <th><button type="button" id="novo"><a href="/DW/adm/administrador?id=0">Adcionar</a></button></th>
             </tfoot>
         </table>
     </body>
