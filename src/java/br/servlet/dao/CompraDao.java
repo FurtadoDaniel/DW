@@ -23,7 +23,7 @@ public class CompraDao {
 
     public void addCompra(Compra compra) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into COMPRA (CLIENTE, PRODUTO) values ( ?, ? )");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into COMPRAS (CLIENTE, PRODUTO) values ( ?, ? )");
             // Parameters start with 1
             preparedStatement.setInt(1, compra.getCliente().getId());
             preparedStatement.setInt(2, compra.getProduto().getId());
@@ -36,7 +36,7 @@ public class CompraDao {
  
     public void deleteCompra(int id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from COMPRA where ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from COMPRAS where ID=?");
             // Parameters start with 1
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -46,9 +46,9 @@ public class CompraDao {
         }
     }
  
-    public void updateProuto(Compra compra) {
+    public void updateCompra(Compra compra) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update COMPRA set CLIENTE=?, PRODUTO=?"
+            PreparedStatement preparedStatement = connection.prepareStatement("update COMPRAS set CLIENTE=?, PRODUTO=? "
                     + "where ID=?");
             // Parameters start with 1
             
@@ -84,7 +84,7 @@ public class CompraDao {
     public Compra getCompra(int Id) {
         Compra compra = new Compra();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from COMPRA where ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from COMPRAS where ID=?");
             preparedStatement.setInt(1, Id);
             ResultSet rs = preparedStatement.executeQuery();
  

@@ -3,8 +3,8 @@ import java.io.*;
 
  
 public class Cliente implements Serializable {
-   int id;
-   String nome, endereco, cep, estado, referencia, cpf, rg, telefone, celular, cartao, bandeira;
+   int id=0;
+   String nome="", endereco="", cep="", estado="", referencia="", cpf="", rg="", telefone="", celular="", cartao="", bandeira="";
  
    public int getId(){
        return this.id;
@@ -59,7 +59,7 @@ public class Cliente implements Serializable {
    }
    
    public void setEndereco(String set){
-       this.nome = set;
+       this.endereco = set;
    }
    
    public void setCep(String set){

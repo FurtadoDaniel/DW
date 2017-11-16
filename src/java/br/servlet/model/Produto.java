@@ -5,9 +5,9 @@ import br.servlet.model.Categoria;
  
 public class Produto implements Serializable {
    int id;
-   float valor;
+   float valor=0;
    Categoria categoria;
-   String   nome, descricao;
+   String   nome="", descricao="";
  
    public int getId(){
        return this.id;

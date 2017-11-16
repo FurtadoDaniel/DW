@@ -26,40 +26,44 @@ public class CategoriaController extends HttpServlet {
 
         
         if (!request.getParameterMap().containsKey("id")) {
-            request.setAttribute("categoriaes", dao.getCategorias());
+            request.setAttribute("categorias", dao.getCategorias());
             request.getRequestDispatcher("/tabelaCategoria.jsp").forward(request, response);
         }
         
-        else if(request.getParameter("id") == "0"){
+        else if("0".equals(request.getParameter("id"))){
             request.setAttribute("categoria", new Categoria());
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+            request.getRequestDispatcher("/formCategoria.jsp").forward(request, response);
         }
         
         else {
             request.setAttribute("categoria", dao.getCategoria(Integer.parseInt(request.getParameter("id"))));
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+            request.getRequestDispatcher("/formCategoria.jsp").forward(request, response);
         }
     }
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Categoria categoria = new Categoria();
-        categoria.setDescricao(request.getParameter("descricao"));
-        if (request.getParameter("id") == "0"){
-            dao.addCategoria(categoria);
+        
+        if(!request.getParameterMap().containsKey("deleta_id")){
+        
+            Categoria categoria = new Categoria();
+            String desc = request.getParameter("descricao");
+            categoria.setDescricao(desc);
+            if ("0".equals(request.getParameter("id"))){
+                System.out.println(categoria.getDescricao());
+                dao.addCategoria(categoria);
+            }
+            else {
+                String id = request.getParameter("id");
+                categoria.setId(Integer.parseInt(id));
+                dao.updateCategoria(categoria);
+            }
         }
+        
         else {
-            dao.updateProuto(categoria);
+            dao.deleteCategoria(Integer.parseInt(request.getParameter("deleta_id")));
         }
         
-        request.setAttribute("categoriaes", dao.getCategorias());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
-    }
-    
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        dao.deleteCategoria(Integer.parseInt(request.getParameter("id")));
-       
-        request.setAttribute("categoriaes", dao.getCategorias());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+        request.setAttribute("categorias", dao.getCategorias());
+        request.getRequestDispatcher("/tabelaCategoria.jsp").forward(request, response);
     }
 }

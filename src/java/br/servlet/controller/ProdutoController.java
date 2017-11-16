@@ -23,49 +23,59 @@ public class ProdutoController extends HttpServlet {
     public ProdutoController() {
         super();
         dao = new ProdutoDao();
+        cat_dao = new CategoriaDao();
     }
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         
         if (!request.getParameterMap().containsKey("id")) {
-            request.setAttribute("produtoes", dao.getProdutos());
+            request.setAttribute("produtos", dao.getProdutos());
             request.getRequestDispatcher("/tabelaProduto.jsp").forward(request, response);
         }
         
-        else if(request.getParameter("id") == "0"){
+        else if("0".equals(request.getParameter("id"))){
+            request.setAttribute("categorias", cat_dao.getCategorias());
             request.setAttribute("produto", new Produto());
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+            request.getRequestDispatcher("/formProduto.jsp").forward(request, response);
         }
         
         else {
+            request.setAttribute("categorias", cat_dao.getCategorias());
             request.setAttribute("produto", dao.getProduto(Integer.parseInt(request.getParameter("id"))));
-            request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+            request.getRequestDispatcher("/formProduto.jsp").forward(request, response);
         }
     }
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Produto produto = new Produto();
-        produto.setValor(Float.parseFloat(request.getParameter("valor")));
-        produto.setCategoria(cat_dao.getCategoria(Integer.parseInt(request.getParameter("categoria"))));
-        produto.setNome(request.getParameter("nome"));
-        produto.setDescricao(request.getParameter("descricao"));
-        if (request.getParameter("id") == "0"){
-            dao.addProduto(produto);
-        }
-        else {
-            dao.updateProuto(produto);
+        
+        if(!request.getParameterMap().containsKey("deleta_id")){
+        
+            Produto produto = new Produto();
+            String desc = request.getParameter("descricao");
+            String nome = request.getParameter("nome");
+            String cat = request.getParameter("categoria");
+            String val = request.getParameter("valor");
+            produto.setDescricao(desc);
+            produto.setCategoria(cat_dao.getCategoria(Integer.parseInt(cat)));
+            produto.setNome(nome);
+            produto.setValor(Float.parseFloat(val.replace(',', '.')));
+            if ("0".equals(request.getParameter("id"))){
+                dao.addProduto(produto);
+            }
+            else {
+                String id = request.getParameter("id");
+                produto.setId(Integer.parseInt(id));
+                dao.updateProduto(produto);
+            }
         }
         
-        request.setAttribute("produtoes", dao.getProdutos());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
+        else {
+            dao.deleteProduto(Integer.parseInt(request.getParameter("deleta_id")));
+        }
+        
+        request.setAttribute("produtos", dao.getProdutos());
+        request.getRequestDispatcher("/tabelaProduto.jsp").forward(request, response);
     }
     
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        dao.deleteProduto(Integer.parseInt(request.getParameter("id")));
-       
-        request.setAttribute("produtoes", dao.getProdutos());
-        request.getRequestDispatcher("/jsp.jsp").forward(request, response);
-    }
 }

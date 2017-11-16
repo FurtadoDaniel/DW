@@ -13,14 +13,10 @@
         <div name="menuVertical" id="menuVertical">
             <a href="#" class="title">Tabelas</a>
             <a href="/adm/administrador">Administradores</a>
-            <a href="tabelaCategoria.jsp">Categorias</a>
-            <a href="tabelaCliente.jsp">Clientes</a>
-            <a href="tabelaCompras.jsp">Compras</a>
-            <a href="tabelaProduto.jsp">Produtos</a>
-            <a href="#" class="title">Novo</a>
-            <a href="formAdm.jsp">Administrador</a>
-            <a href="formCliente.jsp">Cliente</a>
-            <a href="formProduto.jsp">Produto</a>
+            <a href="/adm/categoria">Categorias</a>
+            <a href="/adm/cliente">Clientes</a>
+            <a href="/adm/compra">Compras</a>
+            <a href="/adm/produto">Produtos</a>
         </div>
 
     </body>

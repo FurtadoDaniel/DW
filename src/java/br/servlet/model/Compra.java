@@ -5,7 +5,7 @@ import br.servlet.model.Cliente;
 import br.servlet.model.Produto;
  
 public class Compra implements Serializable {
-   int id;
+   int id=0;
    Cliente cliente;
    Produto produto;
  

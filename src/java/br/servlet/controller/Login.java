@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
             
         } else {
             HttpSession session = request.getSession();
-            session.setAttribute("adm", true);
+            session.setAttribute("adm", "logado");
             
             response.sendRedirect("homeAdm.jsp");
         }

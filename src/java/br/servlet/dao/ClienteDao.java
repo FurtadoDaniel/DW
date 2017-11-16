@@ -16,7 +16,7 @@ public class ClienteDao {
 
     public void addCliente(Cliente cliente) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into CLIENTE (NOME, ENDERECO, CEP, ESTADO, REFERENCIA, CPF, RG, TELEFONE, CELULAR, CARTAO, BANDEIRA) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into CLIENTES (NOME, ENDERECO, CEP, ESTADO, REFERENCIA, CPF, RG, TELEFONE, CELULAR, CARTAO, BANDEIRA) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
             // Parameters start with 1
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getEndereco());
@@ -38,7 +38,7 @@ public class ClienteDao {
  
     public void deleteCliente(int id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from CLIENTE where ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from CLIENTES where ID=?");
             // Parameters start with 1
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -48,9 +48,9 @@ public class ClienteDao {
         }
     }
  
-    public void updateProuto(Cliente cliente) {
+    public void updateCliente(Cliente cliente) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update CLIENTE set NOME=? , ENDERECO=?, CEP=?, ESTADO=?, REFERENCIA=?, CPF=?, RG=?, TELEFONE=?, CELULAR=?, CARTAO=?, BANDEIRA=?"
+            PreparedStatement preparedStatement = connection.prepareStatement("update CLIENTES set NOME=? , ENDERECO=?, CEP=?, ESTADO=?, REFERENCIA=?, CPF=?, RG=?, TELEFONE=?, CELULAR=?, CARTAO=?, BANDEIRA=?"
                     + "where ID=?");
             // Parameters start with 1
             
@@ -84,7 +84,7 @@ public class ClienteDao {
                 cliente.setEndereco(rs.getString("ENDERECO"));
                 cliente.setCep(rs.getString("CEP"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setEstado(rs.getString("ESADO"));
+                cliente.setEstado(rs.getString("ESTADO"));
                 cliente.setReferencia(rs.getString("REFERENCIA"));
                 cliente.setCpf(rs.getString("CPF"));
                 cliente.setRg(rs.getString("RG"));
@@ -104,7 +104,7 @@ public class ClienteDao {
     public Cliente getCliente(int Id) {
         Cliente cliente = new Cliente();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from CLIENTE where ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from CLIENTES where ID=?");
             preparedStatement.setInt(1, Id);
             ResultSet rs = preparedStatement.executeQuery();
  
@@ -113,7 +113,7 @@ public class ClienteDao {
                 cliente.setEndereco(rs.getString("ENDERECO"));
                 cliente.setCep(rs.getString("CEP"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setEstado(rs.getString("ESADO"));
+                cliente.setEstado(rs.getString("ESTADO"));
                 cliente.setReferencia(rs.getString("REFERENCIA"));
                 cliente.setCpf(rs.getString("CPF"));
                 cliente.setRg(rs.getString("RG"));

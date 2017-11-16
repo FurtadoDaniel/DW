@@ -76,11 +76,4 @@ public class AdministradorController extends HttpServlet {
         request.setAttribute("administradores", dao.getAdministradors());
         request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
     }
-    
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-       
-        request.setAttribute("administradores", dao.getAdministradors());
-        request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
-    }
 }

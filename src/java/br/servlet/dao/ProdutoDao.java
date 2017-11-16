@@ -45,7 +45,7 @@ public class ProdutoDao {
         }
     }
  
-    public void updateProuto(Produto produto) {
+    public void updateProduto(Produto produto) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update PRODUTO set VALOR=?, CATEGORIA=? ,NOME=?, DESCRICAO=?"
                     + "where ID=?");
@@ -67,7 +67,7 @@ public class ProdutoDao {
         List<Produto> produtos = new ArrayList<Produto>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from PRODUTOS");
+            ResultSet rs = statement.executeQuery("select * from PRODUTO");
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("ID"));

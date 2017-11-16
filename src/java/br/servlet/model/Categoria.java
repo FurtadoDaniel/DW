@@ -2,8 +2,8 @@ package br.servlet.model;
 import java.io.*;
  
 public class Categoria implements Serializable {
-   int id;
-   String descricao;
+   int id=0;
+   String descricao="";
  
    public int getId(){
        return this.id;

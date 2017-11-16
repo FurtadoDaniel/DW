@@ -38,7 +38,7 @@ public class CategoriaDao {
         }
     }
  
-    public void updateProuto(Categoria categoria) {
+    public void updateCategoria(Categoria categoria) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update CATEGORIA set DESCRICAO=?"
                     + "where ID=?");
@@ -57,7 +57,7 @@ public class CategoriaDao {
         List<Categoria> categorias = new ArrayList<Categoria>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from CATEGORIAS");
+            ResultSet rs = statement.executeQuery("select * from CATEGORIA");
             while (rs.next()) {
                 Categoria categoria = new Categoria();
                 categoria.setId(rs.getInt("ID"));
