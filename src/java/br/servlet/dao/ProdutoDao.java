@@ -83,12 +83,12 @@ public class ProdutoDao {
  
         return produtos;
     }
- 
-    public Produto getProduto(int Id) {
+    
+    public Produto getProduto(int id) {
         Produto produto = new Produto();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where ID=?");
-            preparedStatement.setInt(1, Id);
+            preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
  
             if (rs.next()) {
@@ -104,4 +104,54 @@ public class ProdutoDao {
  
         return produto;
     }
+ 
+    public List<Produto> getProdutos(Categoria categoria) {
+        int cat = categoria.getId();
+        List<Produto> produtos = new ArrayList<Produto>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where CATEGORIA=?");
+            preparedStatement.setInt(1, cat);
+            ResultSet rs = preparedStatement.executeQuery();
+         
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("ID"));
+                produto.setValor(rs.getFloat("VALOR"));
+                produto.setCategoria(CatDao.getCategoria(rs.getInt("CATEGORIA")));
+                produto.setNome(rs.getString("NOME"));
+                produto.setDescricao(rs.getString("DESCRICAO"));
+                produtos.add(produto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+ 
+        return produtos;
+ 
+    }
+    
+    public List<Produto> getProdutos(String Nome) {
+        List<Produto> produtos = new ArrayList<Produto>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where NOME ");
+            preparedStatement.setString(1, Nome);
+            ResultSet rs = preparedStatement.executeQuery();
+         
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("ID"));
+                produto.setValor(rs.getFloat("VALOR"));
+                produto.setCategoria(CatDao.getCategoria(rs.getInt("CATEGORIA")));
+                produto.setNome(rs.getString("NOME"));
+                produto.setDescricao(rs.getString("DESCRICAO"));
+                produtos.add(produto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+ 
+        return produtos;
+            
+    }
+    
 }

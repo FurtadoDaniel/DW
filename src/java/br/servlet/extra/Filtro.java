@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
-public class adm implements Filter {
+public class Filtro implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
@@ -29,13 +29,22 @@ public class adm implements Filter {
             if (aux.equals("logado")) {
                 chain.doFilter(request, response);
             } else {
+                if ("0".equals(request.getParameter("id")) && !request.getParameterMap().containsKey("deleta_id")){
+                    chain.doFilter(request, response);
+                }
+                else {
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    rd.forward(request, response);
+                }
+            }
+        } else {
+            if ("0".equals(request.getParameter("id")) && !request.getParameterMap().containsKey("deleta_id")){
+                chain.doFilter(request, response);
+            }
+            else {
                 RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                 rd.forward(request, response);
             }
-        } else {
-
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-            rd.forward(request, response);
 
         }
     }

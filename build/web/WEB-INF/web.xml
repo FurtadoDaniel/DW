@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>adm</filter-name>
-        <filter-class>br.servlet.extra.adm</filter-class>
+        <filter-class>br.servlet.extra.Filtro</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>adm</filter-name>
@@ -32,6 +32,14 @@
         <servlet-name>CompraController</servlet-name>
         <servlet-class>br.servlet.controller.CompraController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LojaController</servlet-name>
+        <servlet-class>br.servlet.controller.LojaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CarrinhoCntroller</servlet-name>
+        <servlet-class>br.servlet.controller.CarrinhoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProdutoController</servlet-name>
         <url-pattern>/adm/produto</url-pattern>
@@ -55,5 +63,13 @@
     <servlet-mapping>
         <servlet-name>CompraController</servlet-name>
         <url-pattern>/adm/compra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LojaController</servlet-name>
+        <url-pattern>/LojaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoCntroller</servlet-name>
+        <url-pattern>/CarrinhoCntroller</url-pattern>
     </servlet-mapping>
 </web-app>
