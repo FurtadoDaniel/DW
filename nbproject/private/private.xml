@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/extra/Filtro.java</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/web/login.jsp</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/controller/Login.java</file>
             <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/dao/CompraDao.java</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/controller/AdministradorController.java</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/controller/CarrinhoController.java</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/web/formCliente.jsp</file>
             <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/controller/LojaController.java</file>
             <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/controller/ProdutoController.java</file>
             <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/src/java/br/servlet/dao/ProdutoDao.java</file>
+            <file>file:/C:/Users/Daniel%20Furtado/Desktop/DW/DW/web/homeAdm.jsp</file>
         </group>
     </open-files>
 </project-private>

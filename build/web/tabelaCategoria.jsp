@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="/style.css">
 
         <title>Categorias</title>
     </head>
@@ -14,7 +14,7 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="3"><div name="topnav" id="topnav">
+                    <th colspan="4"><div name="topnav" id="topnav">
                         <a href="/adm/administrador">Adms</a>
                         <a href="/adm/categoria">Categorias</a>
                         <a href="/adm/cliente">Clientes</a>

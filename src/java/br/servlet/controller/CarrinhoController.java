@@ -1,7 +1,11 @@
 package br.servlet.controller;
 
 import br.servlet.dao.CategoriaDao;
+import br.servlet.dao.ClienteDao;
+import br.servlet.dao.CompraDao;
 import br.servlet.dao.ProdutoDao;
+import br.servlet.model.Cliente;
+import br.servlet.model.Compra;
 import br.servlet.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,11 +23,15 @@ public class CarrinhoController extends HttpServlet {
 
     private ProdutoDao dao;
     private CategoriaDao cat_dao;
+    private CompraDao comp_dao;
+    private ClienteDao cli_dao;
  
     public CarrinhoController() {
         super();
         dao = new ProdutoDao();
         cat_dao = new CategoriaDao();
+        comp_dao = new CompraDao();
+        cli_dao = new ClienteDao();
     }
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +44,49 @@ public class CarrinhoController extends HttpServlet {
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        request.setAttribute("cliente", null);
-        request.getRequestDispatcher("/formCliente.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        
+        Cliente cliente = new Cliente();
+            String nome = request.getParameter("nome");
+            String end = request.getParameter("endereco");
+            String cep = request.getParameter("cep");
+            String est = request.getParameter("estado");
+            String ref = request.getParameter("referencia");
+            String cpf = request.getParameter("cpf");
+            String rg = request.getParameter("rg");
+            String tel = request.getParameter("telefone");
+            String cel = request.getParameter("celular");
+            String cart = request.getParameter("cartao");
+            String band = request.getParameter("bandeira");
+            
+            cliente.setNome(nome);
+            cliente.setEndereco(end);
+            cliente.setCep(cep);
+            cliente.setEstado(est);
+            cliente.setReferencia(ref);
+            cliente.setCpf(cpf);
+            cliente.setRg(rg);
+            cliente.setTelefone(tel);
+            cliente.setCelular(cel);
+            cliente.setCartao(cart);
+            cliente.setBandeira(band);
+            cli_dao.addCliente(cliente);
+            
+        List<Cliente> Clientes = cli_dao.getClientes();
+        
+        List<Produto> Carrinho = (List<Produto>) session.getAttribute("carrinho");
+        
+        Compra compra = new Compra();
+        compra.setCliente(Clientes.get(Clientes.size()-1));
+        
+        for (int i = 0; i < Carrinho.size(); i++ ){
+            compra.setProduto(Carrinho.get(i));
+        }
+                
+        
+        request.setAttribute("carrinho", null);
+        
+        request.getRequestDispatcher("/sucesso.jsp").forward(request, response);
     }
     
 }

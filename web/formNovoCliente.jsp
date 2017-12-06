@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="br.servlet.model.Cliente"%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,31 +12,28 @@
     </head>
 
     <body>
-        <form action="cliente" method="post" name="produto" id="produto" autocomplete="on">
-            <%
-                   Cliente aux = (Cliente) request.getAttribute("cliente");
-
-                %>
+        <form action="Carrinho" method="post" name="produto" id="produto" autocomplete="on">
+            
 				<table>
                     <tr hidden>
 						<th>Id:</th>
-						<th><input type="number" name="id" id="id" placeholder="12345578" onchange="validarNum('id')" value="<%=aux.getId()%>"></th>
+						<th><input type="number" name="id" id="id" placeholder="12345578" onchange="validarNum('id')" value=""></th>
 					</tr>
 					<tr>
 						<th>Nome:</th>
-						<th><input type="text" name="nome" id="nome" placeholder="ex.: Nome Produto" autofocus onchange="validarTexto('nome')" value="<%=aux.getNome()%>"></th>
+						<th><input type="text" name="nome" id="nome" placeholder="ex.: Nome Produto" autofocus onchange="validarTexto('nome')" value=""></th>
 					</tr>
                     <tr>
 						<th>EndereÃ§o:</th>
-						<th><input type="text" name="endereco" id="endereÃ§o" placeholder="ex.: Ruas dos Alfeneiros 4" onchange="validarAlphaNum('endereÃ§o')" value="<%=aux.getEndereco()%>"></th>
+						<th><input type="text" name="endereco" id="endereÃ§o" placeholder="ex.: Ruas dos Alfeneiros 4" onchange="validarAlphaNum('endereÃ§o')" value=""></th>
 					</tr>
 					<tr>
 						<th>Cep:</th>
-						<th><input type="number" name="cep" id="cep" placeholder="ex.: 12345578" onchange="validarNum('cep', 8)" value="<%=aux.getCep()%>"></th>
+						<th><input type="number" name="cep" id="cep" placeholder="ex.: 12345578" onchange="validarNum('cep', 8)" value=""></th>
 					</tr>
 					<tr>
 						<th>Estado(UF):</th>
-						<th><select name="estado" value="<%=aux.getEstado()%>">
+						<th><select name="estado" value="">
 									<option value="ac">Acre</option>
 									<option value="al">Alagoas</option>
 									<option value="ap">AmapÃ¡</option>
@@ -69,31 +65,31 @@
 					</tr>
 					<tr>
 						<th>ReferÃªcia:</th>
-						<th><textarea rows="1" name="referencia" id="referencia" value="<%=aux.getReferencia()%>"></textarea></th>
+						<th><textarea rows="1" name="referencia" id="referencia" value=""></textarea></th>
 					</tr>
 					<tr>
 						<th>CPF:</th>
-						<th><input type="text" name="cpf" id="cpf" placeholder="ex.: 12345678901" onchange="validarNum('cpf', 11)" value="<%=aux.getCpf()%>"></th>
+						<th><input type="text" name="cpf" id="cpf" placeholder="ex.: 12345678901" onchange="validarNum('cpf', 11)" value=""></th>
 					</tr>
 					<tr>
 						<th>RG(identidade):</th>
-						<th><input type="text" name="rg" id="rg" placeholder="ex.: 123456789" onchange="validarNum('rg')" value="<%=aux.getRg()%>"></th>
+						<th><input type="text" name="rg" id="rg" placeholder="ex.: 123456789" onchange="validarNum('rg')" value=""></th>
 					</tr>
 					<tr>
 						<th>Telefone fixo:</th>
-						<th><input type="text" name="telefone" id="telefone" placeholder="ex.: 2112345678" onchange="validarNum('tel', 10)" value="<%=aux.getTelefone()%>"></th>
+						<th><input type="text" name="telefone" id="telefone" placeholder="ex.: 2112345678" onchange="validarNum('tel', 10)" value=""></th>
 					</tr>
 					<tr>
 						<th>Celular:</th>
-						<th><input type="text" name="celular" id="celular" placeholder="ex.: 21912345678" onchange="validarNum('cel', 11)" value="<%=aux.getCelular()%>"></th>
+						<th><input type="text" name="celular" id="celular" placeholder="ex.: 21912345678" onchange="validarNum('cel', 11)" value=""></th>
 					</tr>
 					<tr>
 						<th>NÃ¹mero do cartÃ£o de crÃ©dito:</th>
-						<th><input type="text" name="cartao" id="cartao" autocomplete="off" onchange="validarNum('catao')" value="<%=aux.getCartao()%>"></th>
+						<th><input type="text" name="cartao" id="cartao" autocomplete="off" onchange="validarNum('catao')" value=""></th>
 					</tr>
 					<tr>
 						<th>Bandeira do cartÃ£o de crÃ©dito:</th>
-						<th><select name="bandeira" id="bandeira" value="<%=aux.getBandeira()%>">
+						<th><select name="bandeira" id="bandeira" value="">
 									<option value="american">American Express</option>
 									<option value="discover">Discover Network</option>
 									<option value="elo">Elo</option>

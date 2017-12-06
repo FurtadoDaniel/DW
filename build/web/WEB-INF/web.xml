@@ -37,7 +37,7 @@
         <servlet-class>br.servlet.controller.LojaController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CarrinhoCntroller</servlet-name>
+        <servlet-name>CarrinhoController</servlet-name>
         <servlet-class>br.servlet.controller.CarrinhoController</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -66,10 +66,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LojaController</servlet-name>
-        <url-pattern>/LojaController</url-pattern>
+        <url-pattern>/Loja</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CarrinhoCntroller</servlet-name>
-        <url-pattern>/CarrinhoCntroller</url-pattern>
+        <servlet-name>CarrinhoController</servlet-name>
+        <url-pattern>/Carrinho</url-pattern>
     </servlet-mapping>
 </web-app>

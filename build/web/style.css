@@ -70,7 +70,6 @@ a {
     display: block;
     color: white;
     float: left;
-    color: white;
     text-align: center;
     padding: 10px 12px;
     text-decoration: none;
@@ -84,4 +83,23 @@ a {
 #topnav a.active {
     background-color: darkgrey;
     color: black;
+}
+
+#topnav div[name="restrito"] {
+    background-color: darkblue;
+}
+
+#topnav div[name="restrito"] a {
+    color: white;
+}
+
+#topnav div[name="restrito"] a:hover {
+    background-color: lightblue;
+    color: black;
+}
+
+#imagem {
+    border: none;
+    height: 60px;
+    width: 75px;
 }

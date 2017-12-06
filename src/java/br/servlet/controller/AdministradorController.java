@@ -73,22 +73,9 @@ public class AdministradorController extends HttpServlet {
             dao.deleteAdministrador(Integer.parseInt(request.getParameter("deleta_id")));
         }
         
-        HttpSession sessao = request.getSession();
-        Object logado = sessao.getAttribute("adm");
-        if (logado != null) {
-            String aux = (String) logado;
-            if (aux.equals("logado")) {
-                request.setAttribute("administradores", dao.getAdministradors());
-                request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
-            }
-            else {
-                response.sendRedirect("/Sucesso.jsp");
-            }
-        }
+        request.setAttribute("administradores", dao.getAdministradors());
+        request.getRequestDispatcher("/tabelaAdministrador.jsp").forward(request, response);
         
-        else {
-           response.sendRedirect("/Sucesso.jsp"); 
-        }
         
         
     }

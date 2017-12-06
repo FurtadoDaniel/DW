@@ -28,6 +28,9 @@ public class LojaController extends HttpServlet {
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        
+        request.setAttribute("categorias", cat_dao.getCategorias());
+        
         if (!request.getParameterMap().containsKey("filtro")) {
             request.setAttribute("produtos", dao.getProdutos(request.getParameter("filtro")));
             request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -39,8 +42,7 @@ public class LojaController extends HttpServlet {
         }
         
         else {
-            request.setAttribute("categorias", cat_dao.getCategorias());
-            request.setAttribute("produto", new Produto());
+            request.setAttribute("produtos", dao.getProdutos());
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
