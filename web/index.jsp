@@ -1,7 +1,7 @@
-<%@page import="br.servlet.model.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.servlet.model.Categoria"%>
+<%@page import="br.servlet.model.Produto"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,9 +38,11 @@
                 <tr>
                     <th colspan="2"><div id="searchbar">
                         <tr>
-                            <th><input type="text" placeholder="Pesquisar..."></th>
-                            <th><button type="button">Pesquisar</button></th>
-                            <th><input type="image" src="ÍCONES\carrinho.jpg" alt="Carrinho" id="imagem"></th>
+                            <form action="/Loja" method="get" name="addcarrinho" id="addcarrinho" autocomplete="off">
+                                <th><input name="filtro" type="text" placeholder="Pesquisar..."></th>
+                                <th><button  type="submit">Pesquisar</button></th>
+                            </form>
+                        <th><a href="/Carrinho"><input type="image" src="ÍCONES\carrinho.jpg" alt="Carrinho" id="imagem"></a></th>
                         </tr>
                     </div></th>
                 </tr>
@@ -48,24 +50,26 @@
 
             <tbody>
                 
-                <tr>
-                    
-                        <%
-                            ArrayList<Produto> saida = (ArrayList) request.getAttribute("produtos");
-                            for (int i = 0; i < saida.size(); i++) {
-                                Produto prd = (Produto)saida.get(i);
+                
+                <%
 
-                        %>
-                    
-                        <td colspan="2"> <%=prd.getNome()%> <%=prd.getDescricao()%> - <%=prd.getValor()%> </td>
-                        <form action="/Loja" method="post" name="addcarrinho" id="addcarrinho" autocomplete="off">
-                             <input type="hidden" name="produto_id" value="<%=prd.getId()%>">
+                    ArrayList<Produto> saida = (ArrayList) request.getAttribute("produtos");
+                    for (int i = 0; i < saida.size(); i++) {
+                        Produto prd = (Produto)saida.get(i);
+
+                %>
+                
+                <tr>
+                        <td colspan="2"> <%=prd.getNome()%> <%=prd.getDescricao()%> - R$ <%=prd.getValor()%> </td>
+                        <td><a><form action="/Loja" method="post" name="addcarrinho" id="addcarrinho" autocomplete="off">
+                             <input type="hidden" name="produto" value="<%=prd.getId()%>">
                              <input type="submit" id="nocss" value="COMPRAR" >
-                        </form>
-                        <%
-                            }
-                        %>
+                                </form></a></td>
+                        
                 </tr>
+                <%
+                    }
+                %>
             </tbody>
         </table>
     </body>

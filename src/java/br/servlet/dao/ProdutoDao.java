@@ -133,8 +133,7 @@ public class ProdutoDao {
     public List<Produto> getProdutos(String Nome) {
         List<Produto> produtos = new ArrayList<Produto>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where NOME ");
-            preparedStatement.setString(1, Nome);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from PRODUTO where NOME like '%"+Nome+"%' ");
             ResultSet rs = preparedStatement.executeQuery();
          
             while (rs.next()) {

@@ -33,7 +33,7 @@ public class Filtro implements Filter {
                     chain.doFilter(request, response);
                 }
                 else {
-                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
                     rd.forward(request, response);
                 }
             }
@@ -42,7 +42,7 @@ public class Filtro implements Filter {
                 chain.doFilter(request, response);
             }
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
             }
 

@@ -31,13 +31,13 @@ public class LojaController extends HttpServlet {
         
         request.setAttribute("categorias", cat_dao.getCategorias());
         
-        if (!request.getParameterMap().containsKey("filtro")) {
+        if (request.getParameterMap().containsKey("filtro")) {
             request.setAttribute("produtos", dao.getProdutos(request.getParameter("filtro")));
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         
-        else if (!request.getParameterMap().containsKey("categoria")) {
-            request.setAttribute("produtos", dao.getProdutos(request.getParameter("categoria")));
+        else if (request.getParameterMap().containsKey("categoria")) {
+            request.setAttribute("produtos", dao.getProdutos(cat_dao.getCategoria(Integer.parseInt(request.getParameter("categoria")))));
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         
@@ -51,13 +51,13 @@ public class LojaController extends HttpServlet {
         
         HttpSession session = request.getSession();
         List<Produto> produtos = new ArrayList<Produto>();
-        produtos = null;
-        Object carrinho = session.getAttribute("carrinho");
+        Object carrinho =  session.getAttribute("carrinho");
         if (carrinho != null) {
             produtos = (List<Produto>) carrinho;
         }
         produtos.add(dao.getProduto(Integer.parseInt(request.getParameter("produto"))));
         session.setAttribute("carrinho", produtos);
+        request.setAttribute("carrinho", (List<Produto>) session.getAttribute("carrinho"));
         request.getRequestDispatcher("/carrinho.jsp").forward(request, response);
     }
     

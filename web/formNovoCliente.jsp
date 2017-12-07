@@ -73,7 +73,7 @@
 					</tr>
 					<tr>
 						<th>RG(identidade):</th>
-						<th><input type="text" name="rg" id="rg" placeholder="ex.: 123456789" onchange="validarNum('rg')" value=""></th>
+						<th><input type="text" name="rg" id="rg" placeholder="ex.: 123456789" onchange="validarNum('rg',9)" value=""></th>
 					</tr>
 					<tr>
 						<th>Telefone fixo:</th>

@@ -39,7 +39,7 @@
 						<th> <select name ="produto" value="<%=aux.getProduto()%>">
                                                         <%
                                                             ArrayList<Cliente> clientes = (ArrayList) request.getAttribute("clientes");
-                                                            for (int i = 0; i < produtos.size(); i++) {
+                                                            for (int i = 0; i < clientes.size(); i++) {
                                                                 Cliente cliente = (Cliente) clientes.get(i);
                                                             
                                                                 %> <option value="<%=cliente.getId()%>"> <%=cliente.getNome()%> </option> 

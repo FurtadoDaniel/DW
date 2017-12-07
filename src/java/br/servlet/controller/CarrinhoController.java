@@ -46,47 +46,69 @@ public class CarrinhoController extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        Cliente cliente = new Cliente();
-            String nome = request.getParameter("nome");
-            String end = request.getParameter("endereco");
-            String cep = request.getParameter("cep");
-            String est = request.getParameter("estado");
-            String ref = request.getParameter("referencia");
-            String cpf = request.getParameter("cpf");
-            String rg = request.getParameter("rg");
-            String tel = request.getParameter("telefone");
-            String cel = request.getParameter("celular");
-            String cart = request.getParameter("cartao");
-            String band = request.getParameter("bandeira");
+        if(request.getParameterMap().containsKey("deleta_id")){
+        
+            List<Produto> carrinho = (List<Produto>) session.getAttribute("carrinho");
             
-            cliente.setNome(nome);
-            cliente.setEndereco(end);
-            cliente.setCep(cep);
-            cliente.setEstado(est);
-            cliente.setReferencia(ref);
-            cliente.setCpf(cpf);
-            cliente.setRg(rg);
-            cliente.setTelefone(tel);
-            cliente.setCelular(cel);
-            cliente.setCartao(cart);
-            cliente.setBandeira(band);
-            cli_dao.addCliente(cliente);
             
-        List<Cliente> Clientes = cli_dao.getClientes();
-        
-        List<Produto> Carrinho = (List<Produto>) session.getAttribute("carrinho");
-        
-        Compra compra = new Compra();
-        compra.setCliente(Clientes.get(Clientes.size()-1));
-        
-        for (int i = 0; i < Carrinho.size(); i++ ){
-            compra.setProduto(Carrinho.get(i));
+            for(int i = 0; i < carrinho.size(); i++)
+            {
+                Produto p = carrinho.get(i);
+
+                if(p.getId() == Integer.parseInt(request.getParameter("deleta_id")))
+                {
+                    carrinho.remove(p);
+
+                }
+            }
+            session.setAttribute("carrinho", carrinho);
+            request.setAttribute("carrinho", carrinho);
+            request.getRequestDispatcher("/carrinho.jsp").forward(request, response);
+            
         }
-                
         
-        request.setAttribute("carrinho", null);
-        
-        request.getRequestDispatcher("/sucesso.jsp").forward(request, response);
+        else {
+            Cliente cliente = new Cliente();
+                String nome = request.getParameter("nome");
+                String end = request.getParameter("endereco");
+                String cep = request.getParameter("cep");
+                String est = request.getParameter("estado");
+                String ref = request.getParameter("referencia");
+                String cpf = request.getParameter("cpf");
+                String rg = request.getParameter("rg");
+                String tel = request.getParameter("telefone");
+                String cel = request.getParameter("celular");
+                String cart = request.getParameter("cartao");
+                String band = request.getParameter("bandeira");
+
+                cliente.setNome(nome);
+                cliente.setEndereco(end);
+                cliente.setCep(cep);
+                cliente.setEstado(est);
+                cliente.setReferencia(ref);
+                cliente.setCpf(cpf);
+                cliente.setRg(rg);
+                cliente.setTelefone(tel);
+                cliente.setCelular(cel);
+                cliente.setCartao(cart);
+                cliente.setBandeira(band);
+                cli_dao.addCliente(cliente);
+
+            List<Cliente> Clientes = cli_dao.getClientes();
+
+            List<Produto> Carrinho = (List<Produto>) session.getAttribute("carrinho");
+
+            Compra compra = new Compra();
+            compra.setCliente(Clientes.get(Clientes.size()-1));
+
+            for (int i = 0; i < Carrinho.size(); i++ ){
+                compra.setProduto(Carrinho.get(i));
+                comp_dao.addCompra(compra);
+            }
+
+            session.invalidate();
+            request.getRequestDispatcher("/comprafinalizada.jsp").forward(request, response);
+        }
     }
     
 }
